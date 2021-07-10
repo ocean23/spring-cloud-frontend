@@ -1,0 +1,11 @@
+server:
+  port: ${random.int(8310,8320)}
+spring:
+  application:
+    name: spring-cloud-frontend
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        prefer-agent-address: true
