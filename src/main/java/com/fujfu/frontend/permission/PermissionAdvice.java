@@ -22,6 +22,8 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
+ * 权限管理主要逻辑类
+ *
  * @author Beldon
  */
 public class PermissionAdvice implements MethodInterceptor {
