@@ -76,6 +76,7 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
+        <!-- begin JAXB API是java EE 的API-->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
@@ -96,6 +97,7 @@
             <artifactId>activation</artifactId>
             <version>${activation.version}</version>
         </dependency>
+        <!-- end JAXB API是java EE 的API-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
