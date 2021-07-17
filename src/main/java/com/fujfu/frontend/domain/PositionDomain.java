@@ -27,4 +27,14 @@ public class PositionDomain {
         entity.setLikeCount(entity.getLikeCount() - 1);
         positionAutoRepo.save(entity);
     }
+
+    public void markPublish() {
+        entity.setPublished(true);
+        positionAutoRepo.save(entity);
+    }
+
+    public void markPrivate() {
+        entity.setPublished(false);
+        positionAutoRepo.save(entity);
+    }
 }

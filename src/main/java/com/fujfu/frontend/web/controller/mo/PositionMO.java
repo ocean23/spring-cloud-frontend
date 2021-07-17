@@ -18,4 +18,6 @@ public class PositionMO {
     private int likeCount;
 
     private boolean like;
+
+    private boolean published;
 }

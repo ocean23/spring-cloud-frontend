@@ -4,6 +4,7 @@ import com.fujfu.frontend.entity.root.CandidateDO;
 import com.fujfu.frontend.entity.root.PositionDO;
 import com.fujfu.frontend.repo.ApplyRecordAutoRepo;
 import com.fujfu.frontend.repo.CandidateAutoRepo;
+import com.fujfu.frontend.repo.EventRecordReceiveAutoRepo;
 import com.fujfu.frontend.repo.PositionAutoRepo;
 import com.fujfu.frontend.web.controller.mo.ResponseMO;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ public class DataInitController {
     private final CandidateAutoRepo candidateAutoRepo;
     private final PositionAutoRepo positionAutoRepo;
     private final ApplyRecordAutoRepo applyRecordAutoRepo;
+    private final EventRecordReceiveAutoRepo eventRecordReceiveAutoRepo;
 
 
     @GetMapping("/init")
@@ -33,6 +35,8 @@ public class DataInitController {
         initCandidate();
         initPosition();
         initApplyRecord();
+        eventRecordReceiveAutoRepo.deleteAll();
+
         return ResponseMO.success();
     }
 

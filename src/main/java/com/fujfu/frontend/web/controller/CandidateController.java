@@ -22,7 +22,6 @@ import java.util.Set;
 public class CandidateController extends BaseController {
 
     private final PositionAutoRepo positionAutoRepo;
-    private final ApplyRecordAutoRepo applyRecordAutoRepo;
 
     @GetMapping("/position/liked")
     public ResponseMO<List<PositionMO>> listLikedPosition() {
@@ -38,6 +37,7 @@ public class CandidateController extends BaseController {
                 positionMO.setLike(true);
                 positionMO.setWorkContent(positionDO.getWorkContent());
                 positionMO.setLikeCount(positionDO.getLikeCount());
+                positionMO.setPublished(positionDO.isPublished());
                 likedMOs.add(positionMO);
             }
         }
@@ -72,10 +72,27 @@ public class CandidateController extends BaseController {
                 positionMO.setLike(true);
                 positionMO.setWorkContent(positionDO.getWorkContent());
                 positionMO.setLikeCount(positionDO.getLikeCount());
+                positionMO.setPublished(positionDO.isPublished());
                 positionMOS.add(positionMO);
             }
         }
 
         return ResponseMO.successWithData(positionMOS);
+    }
+
+
+
+    @PutMapping("/position/{positionId}/like")
+    public ResponseMO like(@PathVariable String positionId){
+        final CandidateDomain candidateDomain = getCurrentLoginCandidateDomain();
+        candidateDomain.like(positionId);
+        return ResponseMO.success();
+    }
+
+    @PutMapping("/position/{positionId}/unlike")
+    public ResponseMO unlike(@PathVariable String positionId){
+        final CandidateDomain candidateDomain = getCurrentLoginCandidateDomain();
+        candidateDomain.unlike(positionId);
+        return ResponseMO.success();
     }
 }

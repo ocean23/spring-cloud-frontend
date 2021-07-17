@@ -4,17 +4,14 @@ import com.fujfu.frontend.domain.CandidateDomain;
 import com.fujfu.frontend.domain.DomainFactory;
 import com.fujfu.frontend.entity.root.CandidateDO;
 import com.fujfu.frontend.exception.LoginValidException;
+import com.fujfu.frontend.permission.authentication.Authentication;
+import com.fujfu.frontend.permission.authentication.AuthenticationHolder;
 import com.fujfu.frontend.repo.CandidateAutoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 public abstract class BaseController {
-    private static final String MOBILE_KEY = "mobile";
-    private static final String USER_ID_KEY = "userId";
 
     @Autowired
     private CandidateAutoRepo candidateAutoRepo;
@@ -22,8 +19,11 @@ public abstract class BaseController {
     private DomainFactory domainFactory;
 
     protected String currentUserId() {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        return request.getHeader(USER_ID_KEY);
+        final Optional<Authentication> authentication = AuthenticationHolder.get();
+        if (authentication.isEmpty()) {
+            return null;
+        }
+        return authentication.get().getUserId();
     }
 
 
