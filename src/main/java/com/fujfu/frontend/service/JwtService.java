@@ -23,9 +23,9 @@ public class JwtService {
     // 60*60*24*7 一周的时间
     private final static int expiration = 604800;
 
-    public String generateToken(String name, String mobile) {
+    public String generateToken(String userId, String mobile) {
         return Jwts.builder()
-                .setSubject(name)
+                .setSubject(userId)
                 .claim(MOBILE, mobile)
                 .setExpiration(generateExpirationDate(expiration))
                 .signWith(SignatureAlgorithm.HS256, secret)

@@ -1,5 +1,5 @@
 server:
-  port: ${random.int(8310,8320)}
+  port: 8311
 spring:
   application:
     name: spring-cloud-frontend
@@ -9,3 +9,13 @@ spring:
       port: 8500
       discovery:
         prefer-agent-address: true
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: demo
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest

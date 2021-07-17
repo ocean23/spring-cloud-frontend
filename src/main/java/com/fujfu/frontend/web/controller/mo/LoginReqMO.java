@@ -14,11 +14,6 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @ToString
 public class LoginReqMO {
-
-    /**
-     * 姓名
-     */
-    private String name;
     /**
      * 手机号码
      */
